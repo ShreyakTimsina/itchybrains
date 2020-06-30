@@ -1,0 +1,17 @@
+// VARIABLES
+
+$website-width: 1200px;
+$main-color: #6aee8b;
+$second-color: #fddb41;
+$light-color: #f4f4f4;
+$medium-color: #ccc;
+$dark-color: #333;
+$bg-image: url("../img/brain1.jpg");
+
+@function set-text-color($color) {
+  @if (lightness($color) > 50) {
+    @return #000;
+  } @else {
+    @return #fff;
+  }
+}

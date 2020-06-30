@@ -1,0 +1,458 @@
+@import "variables";
+@import "utilities";
+
+// GENERAL STYLE
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  line-height: 1.6;
+  background: #fff;
+}
+
+a {
+  text-decoration: none;
+  color: $dark-color;
+}
+
+ul {
+  list-style: none;
+}
+
+h2,
+h3,
+h4 {
+  text-transform: uppercase;
+}
+
+img {
+  width: 100%;
+}
+
+// LOGO
+#logo {
+  width: 100px;
+  height: 100px;
+  color: #fff;
+  text-transform: uppercase;
+  border-radius: 50%;
+}
+
+// MAIN NAV
+#main-nav {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1rem;
+
+  ul {
+    display: flex;
+  }
+
+  li {
+    padding: 1rem 1.5rem;
+  }
+
+  a {
+    text-decoration: none;
+    color: #fff;
+    text-transform: uppercase;
+    border-bottom: 3px transparent solid;
+    padding-bottom: 0.5rem;
+    transition: border-color 0.5s;
+
+    &.current {
+      border-color: $light-color;
+    }
+
+    &:hover {
+      border-color: $second-color;
+    }
+  }
+}
+
+// HEADER
+
+#header {
+  &-home {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+      $bg-image no-repeat center right/ cover;
+    overflow: auto;
+    height: 100vh;
+    color: rgb(255, 255, 255);
+
+    // &::before {
+    //   content: "";
+    //   background-color: rgba(#000000, 0.5);
+    //   height: 100%;
+    //   width: 100%;
+    //   position: absolute;
+    //   top: 0;
+    // }
+
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      // z-index: 3;
+
+      h1 {
+        color: #fff;
+        font-size: 5rem;
+
+        em {
+          visibility: hidden;
+        }
+      }
+
+      .content-wrapper {
+        width: 100%;
+        display: grid;
+        grid-template-areas: "englist player player neplist";
+        gap: 2rem;
+
+        .content-list {
+          &-english {
+            grid-area: englist;
+          }
+
+          &-nepali {
+            grid-area: neplist;
+          }
+        }
+
+        .player-wrapper {
+          grid-area: player;
+        }
+
+        ul {
+          // width: 170px;
+          overflow-y: scroll;
+          height: 50vh;
+
+          &::-webkit-scrollbar {
+            width: 10px;
+          }
+
+          // &::-webkit-scrollbar-track {
+          //   box-shadow: inset 0 0 5px grey;
+          //   border-radius: 10px;
+          // }
+
+          &::-webkit-scrollbar-thumb {
+            background: $medium-color;
+            border-radius: 10px;
+          }
+
+          &::-webkit-scrollbar-thumb:hover {
+            background: $light-color;
+          }
+
+          li {
+            padding: 1rem;
+            // width: 300px;
+            color: #fff;
+            border-bottom: 1px solid $medium-color;
+            cursor: pointer;
+          }
+        }
+
+        .audio-container {
+          background-color: rgb(255, 255, 255);
+          color: black;
+          text-align: center;
+          padding: 1rem;
+          margin-top: 5rem;
+          border-radius: 15px;
+          box-shadow: 0px 20px 20px 0 rgba(#000000, 0.7);
+          position: relative;
+          display: flex;
+          justify-content: space-between;
+
+          .audio-info {
+            position: absolute;
+            top: 0;
+            left: 20px;
+            width: calc(100% - 40px);
+            background-color: rgb(250, 240, 240);
+            border-radius: 15px 15px 0 0;
+            // padding: 0 15px 15px 100px;
+            padding: 0 10px 25px 10px;
+            transform: translateY(-100%);
+
+            h4 {
+              padding: 5px;
+            }
+
+            .progress-container {
+              width: calc(100% - 100px);
+              border-radius: 5px;
+              height: 4px;
+              margin: 6px 6px 0px 90px;
+              background-color: rgb(255, 255, 255);
+              cursor: pointer;
+
+              .progress {
+                height: 100%;
+                background-color: $second-color;
+                width: 0%;
+                transition: width 0.1s linear;
+              }
+            }
+          }
+
+          .image-container {
+            position: relative;
+            width: 110px;
+
+            img {
+              border-radius: 50%;
+              object-fit: cover;
+              height: 110px;
+              width: 110px;
+              position: absolute;
+              bottom: 5px;
+              left: 0;
+              animation: rotate 3s linear infinite;
+              animation-play-state: paused;
+              box-shadow: 3px 3px 3px 3px rgba(#202020, 0.3);
+            }
+
+            &::after {
+              content: "";
+              width: 20px;
+              height: 20px;
+              border-radius: 50%;
+              background-color: rgb(255, 255, 255);
+              position: absolute;
+              bottom: 100%;
+              left: 50%;
+              transform: translate(-50%, 50%);
+            }
+          }
+
+          &.play .image-container img {
+            animation-play-state: running;
+            box-shadow: none;
+          }
+
+          .navigation {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .action-btn {
+              border: none;
+              background-color: #fff;
+              color: $main-color;
+              padding: 0.7rem;
+              font-size: 20px;
+              cursor: pointer;
+              margin: 0 0.7rem;
+
+              &.action-btn-big {
+                font-size: 30px;
+                color: #48cf69;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &-inner {
+    background: $bg-image no-repeat 20% 30% / cover;
+    height: 5.5rem;
+    border-bottom: 3px solid $main-color;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// FOOTER
+
+#footer {
+  background-color: $dark-color;
+  height: 5rem;
+  color: set-text-color($dark-color);
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    height: 5rem;
+    align-items: center;
+    gap: 2rem;
+
+    .footer-text {
+      display: flex;
+      justify-content: space-evenly;
+    }
+
+    .developer {
+      color: rgb(199, 199, 199);
+    }
+
+    .social .fab {
+      margin-right: 1rem;
+      border: 2px solid #fff;
+      border-radius: 50%;
+      height: 40px;
+      width: 40px;
+      line-height: 20px;
+      text-align: center;
+      padding: 0.5rem;
+
+      &:hover {
+        background-color: $main-color;
+      }
+    }
+  }
+}
+
+// ABOUT PAGE
+
+#about {
+  &-a {
+    .about-info {
+      display: grid;
+      grid-template-areas: "itchyimage info info ";
+      grid-gap: 1.2rem;
+
+      .itchy-image {
+        grid-area: itchyimage;
+        margin: 0.25rem;
+      }
+
+      .info {
+        grid-area: info;
+        border-left: 3px solid $main-color;
+        padding: 0 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+      }
+    }
+  }
+
+  &-b {
+    .bio-info {
+      display: grid;
+      grid-template-areas: "bio bio bioimage ";
+      grid-gap: 1.2rem;
+      border-right: 5px solid $second-color;
+      padding: 1.5rem;
+      margin: 2rem 0;
+
+      .bio-image {
+        grid-area: bioimage;
+        margin: 0.25rem;
+      }
+
+      .bio {
+        grid-area: bio;
+        padding: 0.8rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .social .fab {
+          margin-right: 1rem;
+          border: 2px solid #fff;
+          border-radius: 50%;
+          height: 40px;
+          width: 40px;
+          line-height: 20px;
+          text-align: center;
+          padding: 0.5rem;
+
+          &:hover {
+            background-color: $second-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+// CONTACT PAGE
+
+// SECTION A CONTACT FORM
+
+#contact {
+  &-a {
+    .contact-form {
+      display: grid;
+      grid-template-areas:
+        "name name email email"
+        "subject subject number number"
+        "message message message message"
+        "submit submit submit submit";
+
+      grid-gap: 1.5rem;
+
+      // GRID AREAS
+
+      .name {
+        grid-area: name;
+      }
+      .email {
+        grid-area: email;
+      }
+      .subject {
+        grid-area: subject;
+      }
+      .number {
+        grid-area: number;
+      }
+      .message {
+        grid-area: message;
+        height: 100px;
+      }
+      .submit {
+        grid-area: submit;
+        border: none;
+        border-radius: 5px;
+        width: 50%;
+        margin: auto;
+
+        &:hover {
+          background-color: $main-color;
+        }
+      }
+
+      // FORM INPUT
+
+      .enter {
+        padding: 0.5rem;
+        border: 1px solid $medium-color;
+        border-radius: 5px;
+      }
+    }
+  }
+
+  // INFORMATION
+
+  &-b {
+    .contact-info {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+  }
+}
+
+@import "media";
