@@ -54,10 +54,28 @@ playBtn.addEventListener("click", function () {
 
 // Playing Songs from the list
 
+document
+  .querySelector(".dont-wanna-miss-a-thing")
+  .addEventListener("click", function () {
+    audio.src = "audio/I-don't-wanna-miss-a-thing.mp3";
+    title.innerHTML = " I Don't Wanna Miss A Thing";
+    audio.play();
+    audioContainer.classList.remove("play");
+    playIcon.classList.remove("fa-play");
+    playIcon.classList.remove("fa-pause");
+    audioContainer.classList.add("play");
+    playIcon.classList.add("fa-pause");
+  });
+
 document.querySelector(".toxicity").addEventListener("click", function () {
   audio.src = "audio/Toxicity.m4a";
   title.innerHTML = "Toxicity";
   audio.play();
+  audioContainer.classList.remove("play");
+  playIcon.classList.remove("fa-play");
+  playIcon.classList.remove("fa-pause");
+  audioContainer.classList.add("play");
+  playIcon.classList.add("fa-pause");
 });
 
 document
@@ -66,16 +84,31 @@ document
     audio.src = "audio/Eye-of-the-tiger.m4a";
     title.innerHTML = "Eye Of The Tiger";
     audio.play();
+    audioContainer.classList.remove("play");
+    playIcon.classList.remove("fa-play");
+    playIcon.classList.remove("fa-pause");
+    audioContainer.classList.add("play");
+    playIcon.classList.add("fa-pause");
   });
 
 document.querySelector(".monika").addEventListener("click", function () {
   audio.src = "audio/Hej-monika.mp3";
   title.innerHTML = "Hej Monika";
   audio.play();
+  audioContainer.classList.remove("play");
+  playIcon.classList.remove("fa-play");
+  playIcon.classList.remove("fa-pause");
+  audioContainer.classList.add("play");
+  playIcon.classList.add("fa-pause");
 });
 
 document.querySelector(".bistarai").addEventListener("click", function () {
   audio.src = "audio/Bistarai.mp3";
   title.innerHTML = "Bistarai Bistarai";
   audio.play();
+  audioContainer.classList.remove("play");
+  playIcon.classList.remove("fa-play");
+  playIcon.classList.remove("fa-pause");
+  audioContainer.classList.add("play");
+  playIcon.classList.add("fa-pause");
 });
